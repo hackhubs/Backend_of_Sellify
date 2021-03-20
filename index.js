@@ -10,7 +10,10 @@ const messages = require("./routes/messages");
 const expoPushTokens = require("./routes/expoPushTokens");
 const helmet = require("helmet");
 const compression = require("compression");
-const config = require("config");
+// const config = require("config");
+const dotenv = require("dotenv");
+
+dotenv.config();
 const app = express();
 
 app.use(express.static("public"));
@@ -28,7 +31,7 @@ app.use("/api/my", my);
 app.use("/api/expoPushTokens", expoPushTokens);
 app.use("/api/messages", messages);
 
-const port = process.env.PORT || config.get("port");
-app.listen(port, function() {
+const port = process.env.PORT || 3000;
+app.listen(port, function () {
   console.log(`Server started on port ${port}...`);
 });
